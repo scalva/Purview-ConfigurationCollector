@@ -1,0 +1,16 @@
+# Output folders
+output/
+logs/
+
+# PowerShell / VS Code
+.vscode/
+*.tmp
+*.log
+
+# OS / misc
+Thumbs.db
+Desktop.ini
+
+# Optional local artifacts
+*.csv
+*.json
