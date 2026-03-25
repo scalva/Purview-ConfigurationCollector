@@ -1,57 +1,82 @@
-Purview Assessment Toolkit (CSV-Based)
-Overview
+Purview Configuration Collector
 
-This solution provides a deterministic, evidence-based assessment of Microsoft Purview configurations using CSV exports.
 
-It is composed of:
 
-A PowerShell extraction script
-A Copilot-driven analysis model (Architecture Mode + SOC prompts)
-Design Principles
-CSV files are the single source of truth
-No assumptions or inferred logic
-Missing values → "Not evidenced in provided sources."
-Fully reproducible outputs
-What This Script Does
 
-Exports Purview configuration into structured CSV datasets:
 
-DLP Policies (operator-grade)
-DLP Rules (operator-grade)
-DLP Rule Conditions
-Retention Policies
-Retention Rules
-Label Policies
-Admin Audit configuration
-Requirements
-PowerShell 7.x
-ExchangeOnlineManagement module
-Compliance Administrator or Security Administrator role
-Execution
+
+🚀 Overview
+
+Purview Configuration Collector is a PowerShell-based tool designed to extract Microsoft Purview configuration into structured CSV datasets for evidence-based analysis.
+
+It acts as the data collection layer for security assessments, architecture reviews, and automated analysis workflows.
+
+🧠 Why this matters
+
+Microsoft Purview environments are:
+
+Complex
+Distributed across workloads
+Difficult to analyze consistently
+
+This tool enables:
+
+Deterministic analysis (no assumptions)
+Repeatable assessments
+Clean input for automation (Copilot / SOC workflows)
+📦 What gets collected
+Area	Dataset
+DLP	Policies, Rules, Conditions
+Retention	Policies and Rules
+Information Protection	Label Policies
+Audit	Admin Audit Configuration
+⚙️ How it works
+Purview → PowerShell Extraction → CSV Output → Copilot / SOC Analysis
+▶️ Execution
+
+Run from PowerShell 7:
+
 pwsh
 cd .\script
 .\PurviewDiag.ps1
-Output
-
-The script generates timestamped folders:
-
+🗂 Output Structure
 output/<Tenant>/<Timestamp>/
 
-Each dataset is aligned with Copilot analysis requirements.
+Each dataset is exported as an independent CSV file.
 
-Logging
-
-Execution logs are stored in:
-
+🧾 Logging
 logs/
 
-Includes transcript and run metadata.
+Includes:
 
-Disclaimer
+Full transcript
+Execution metadata
+Warnings and dataset counts
+📋 Requirements
+Requirement	Details
+PowerShell	7.x
+Module	ExchangeOnlineManagement
+Roles	Compliance Admin / Security Admin
+🧩 Usage Model
+
+This tool is designed to be used as:
+
+Collector layer
+Input for:
+Architecture Mode reporting
+SOC-driven analysis
+Automated compliance assessment
+🔒 Design Principles
+CSV = source of truth
+No transformation in the script
+No assumptions
+Analysis happens downstream
+⚠️ Disclaimer
 
 This tool is read-only.
-It does not modify any Microsoft 365 configuration.
 
-Credits
+No changes are made to tenant configuration.
 
-Based on community contributions and extended for operator-grade Purview analysis.
+👤 Author
+
+Sergio Calva
